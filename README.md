@@ -1,36 +1,202 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 💊 Kolay Hatırla - İlaç Takip Uygulaması
 
-## Getting Started
+Modern ve kullanıcı dostu bir web uygulaması ile günlük ilaçlarınızı takip edin, dozlarınızı yönetin ve hiçbir ilacı unutmayın.
 
-First, run the development server:
+![Kolay Hatırla](docs/images/dashboard.png)
+
+## İçindekiler
+
+- [Özellikler](#-özellikler)
+- [Ekran Görüntüleri](#-ekran-görüntüleri)
+- [Kurulum](#-kurulum)
+- [Kullanım](#-kullanım)
+- [Teknolojiler](#-teknolojiler)
+- [Proje Yapısı](#-proje-yapısı)
+
+## Özellikler
+
+### Güvenli Kullanıcı Sistemi
+- Email ve şifre ile kayıt olma
+- Güvenli giriş yapma
+- Oturum yönetimi (giriş yapınca hatırlanır)
+
+### İlaç Yönetimi
+-  Yeni ilaç ekleme
+-  Mevcut ilaçları düzenleme
+-  İlaç silme
+-  İlaçları aktif/pasif yapma (geçici olarak durdurma)
+-  İlaç notları ekleme
+
+### Doz Takibi
+-  Günlük istatistikler (toplam, alınan, kalan dozlar)
+-  Yaklaşan ilaçlar (3 saat içinde alınması gerekenler)
+-  "Alındı" işaretleme
+-  Gerçek zamanlı güncellemeler
+
+###  Modern Arayüz
+-  Dark mode desteği (sistem tercihine göre)
+-  Responsive tasarım (mobil, tablet, masaüstü uyumlu)
+-  Kullanıcı dostu arayüz
+-  Hızlı ve performanslı
+
+##  Ekran Görüntüleri
+
+### 1. Giriş Sayfası
+Modern ve şık tasarıma sahip giriş sayfası. Gradient arka plan ve kullanıcı dostu form yapısı ile kolay giriş yapabilirsiniz.
+
+![Giriş Sayfası](docs/images/login.png)
+
+### 2. Dashboard (Ana Sayfa)
+Tüm ilaçlarınızı tek bakışta görebileceğiniz, istatistiklerinizi takip edebileceğiniz ana kontrol paneli.
+
+![Dashboard](docs/images/dashboard.png)
+
+### 3. Yeni İlaç Ekleme
+Kolay ve hızlı ilaç ekleme formu. İlaç bilgilerini, dozajını, saatlerini ve tarihlerini kolayca girebilirsiniz.
+
+![Yeni İlaç Ekleme](docs/images/add-medication.png)
+
+##  Kurulum
+
+### Gereksinimler
+
+- Node.js 18.17 veya üzeri
+- npm veya yarn
+- Firebase hesabı ve proje
+
+### Adım 1: Projeyi İndirin
+
+```bash
+git clone <repository-url>
+cd kolay-hatirla-main
+```
+
+### Adım 2: Bağımlılıkları Yükleyin
+
+```bash
+npm install
+```
+
+### Adım 3: Environment Variables Oluşturun
+
+Proje kök dizininde `.env.local` dosyası oluşturun ve Firebase bilgilerinizi ekleyin:
+
+```env
+NEXT_PUBLIC_FIREBASE_API_KEY=
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=y
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=
+NEXT_PUBLIC_FIREBASE_APP_ID=
+```
+
+**Firebase bilgilerinizi nereden alırsınız?**
+1. [Firebase Console](https://console.firebase.google.com/) adresine gidin
+2. Projenizi seçin
+3. Ayarlar > Proje ayarları
+4. "Uygulamalarınız" bölümünden web uygulamanızı seçin
+5. Config bilgilerini kopyalayın
+
+### Adım 4: Uygulamayı Çalıştırın
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Tarayıcınızda [http://localhost:3000](http://localhost:3000) adresine gidin.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+##  Kullanım
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### İlk Kullanım
 
-## Learn More
+1. **Kayıt Olun**
+   - Ana sayfada "Kayıt Ol" linkine tıklayın
+   - Ad, email ve şifre bilgilerinizi girin
+   - "Kayıt Ol" butonuna tıklayın
 
-To learn more about Next.js, take a look at the following resources:
+2. **İlk İlacınızı Ekleyin**
+   - Dashboard'da "Yeni İlaç Ekle" butonuna tıklayın
+   - İlaç bilgilerini doldurun:
+     - İlaç adı
+     - Doz bilgisi (örn: 500 mg, 1 tablet)
+     - Günlük kaç kez alınacağı
+     - Saatler (örn: 08:00, 14:00, 20:00)
+     - Başlangıç ve bitiş tarihleri
+     - Notlar (opsiyonel)
+   - "Kaydet" butonuna tıklayın
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+3. **İlaçlarınızı Takip Edin**
+   - Dashboard'da günlük istatistiklerinizi görün
+   - "Yaklaşan İlaçlarım" bölümünden önümüzdeki 3 saat içindeki ilaçları kontrol edin
+   - İlacı aldığınızda "Alındı olarak işaretle" butonuna tıklayın
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Günlük Kullanım
 
-## Deploy on Vercel
+- Dashboard'u açın
+- Bugünkü istatistiklerinizi kontrol edin
+- Yaklaşan ilaçlarınızı görün
+- İlaç aldığınızda işaretleyin
+- İlaç eklemek, düzenlemek veya silmek için ilgili butonları kullanın
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Teknolojiler
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Bu proje aşağıdaki teknolojiler kullanılarak geliştirilmiştir:
+
+- **[Next.js 16.0.8](https://nextjs.org/)** - React framework
+- **[React 19.2.1](https://react.dev/)** - UI library
+- **[TypeScript 5](https://www.typescriptlang.org/)** - Type-safe JavaScript
+- **[Firebase 12.6.0](https://firebase.google.com/)** - Backend (Authentication & Firestore)
+- **CSS3** - Styling (Vanilla CSS)
+
+## Proje Yapısı
+
+```
+kolay-hatirla-main/
+├── docs/
+│   └── images/              # Ekran görüntüleri
+├── public/                  # Statik dosyalar
+├── src/
+│   ├── app/                 # Next.js sayfaları
+│   │   ├── auth/           # Giriş ve kayıt sayfaları
+│   │   ├── dashboard/      # Ana kontrol paneli
+│   │   └── layout.tsx      # Root layout
+│   ├── lib/                 # İş mantığı
+│   │   ├── firebase.ts     # Firebase konfigürasyonu
+│   │   └── medications.ts  # İlaç işlemleri
+│   ├── styles/              # CSS dosyaları
+│   └── types/               # TypeScript tip tanımları
+├── .env.local               # Environment variables (oluşturulmalı)
+├── next.config.ts          # Next.js konfigürasyonu
+├── package.json            # Bağımlılıklar
+└── tsconfig.json           # TypeScript konfigürasyonu
+```
+
+## Geliştirme
+
+### Geliştirme Modu
+
+```bash
+npm run dev
+```
+
+### Production Build
+
+```bash
+npm run build
+npm run start
+```
+
+### Kod Kontrolü
+
+```bash
+npm run lint
+```
+
+## Scripts
+
+| Komut | Açıklama |
+|-------|----------|
+| `npm run dev` | Geliştirme sunucusunu başlatır (port 3000) |
+| `npm run build` | Production için build oluşturur |
+| `npm run start` | Production sunucusunu başlatır |
+
